@@ -1,5 +1,6 @@
 <template>
-	<div id="videoslider">
+  <!-- The showSlider binding makes sure the slider is loaded only when all the dynamic images are available-->
+	<div id="videoslider" v-if="showSlider">
 		<div class="container mx-auto">
 			<h1 class="my-4">Vue flux</h1>
 
@@ -135,24 +136,11 @@
 			fluxOptions: {
 				autoplay: false
 			},
-			fluxImages: [
-				'./1.jpg',
-        './1.jpg',
-        './1.jpg',
-        './1.jpg',
-        './1.jpg',
-        './1.jpg',
-        './1.jpg',
-        './1.jpg',
-        './1.jpg',
-        './1.jpg',
-        './1.jpg',
-        './1.jpg',
-        //'https://pelmorexpd-a.akamaihd.net/img/1942203455001/201808/1942203455001_5828029706001_5828029974001-vs.jpg'
-			],
+			fluxImages: [],
 			fluxTransitions: Transitions,
 			fluxCaptions: [],
-			rendered: false
+      rendered: false,
+      showSlider:false //showslider is set to true when dynamic images are loaded.
 		}),
 
 		computed: {
@@ -177,24 +165,18 @@
 			getVideodata(){
 				axios({ method: "GET", "url": "https://www.theweathernetwork.com/ca/api/videodata/getplaylistbyid?playlistID=2312993038001&noofvideosPerPlaylist=20&playlistStartsAt=0&sponsored=0&total=12&placecode=canu0029" }).then(result => {
           this.videodataArray= result.data;
-          //this.fluxImages.length=12;
-          //console.log(this.videodataArray.videos);
-          var i=0;
-          console.log('flux 1',this.fluxImages);
-					for (var video in result.data.videos) {
+         	for (var video in result.data.videos) {
 					// if (result.data.hasOwnProperty(video) ) {
             result.data.videos[video].poster=result.data.videos[video].poster.replace("http","https");
-          //	this.fluxImages.push(result.data.videos[video].poster);
-            this.fluxImages[i]=result.data.videos[video].poster;
+          	this.fluxImages.push(result.data.videos[video].poster);
 						this.fluxCaptions.push(result.data.videos[video].title);
-						//console.log(result.data.videos[video].poster);
-            i++;
+
 					// }
 					}
 					this.fluxImages=Object.values(this.fluxImages); //get rid of the keys, keep comma separated values
 					this.fluxCaptions=Object.values(this.fluxCaptions);
+          this.showSlider = true;
 
-					console.log('flux 2',this.fluxImages);
 
 				}, error => {
 					console.error(error);

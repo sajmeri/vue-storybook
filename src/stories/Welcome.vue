@@ -17,26 +17,6 @@
       (Basically a story is like a visual test case.)
     </p>
     <p>
-      See these sample
-      <br />
-      <a class="link" @click="onClick" role="button" tabIndex="0">stories</a>
-      <br />
-      for a component called
-      <br />
-      <code class="code">Button</code>
-      .
-    </p>
-    <p>
-      Just like that, you can add your own components as stories.
-      <br />
-      You can also edit those components and see changes right away.
-      <br />
-      (Try editing the <code class="code">Button</code> component
-      located at <code class="code">src/stories/Button.js</code>.)
-    </p>
-    <p>
-      This is just one thing you can do with Storybook.
-      <br />
       Have a look at the
       <br />
       <a

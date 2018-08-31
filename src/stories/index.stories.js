@@ -12,9 +12,9 @@ import Videos from './Videos.vue';
 import Videoslider from './VideosSlider.vue';
 
 //Decorator functions used with addDecorator
-function Reded() {
+function Green() {
   return {
-    template: '<div style="color: red;"><story/></div>',
+    template: '<div style="color: green;"><story/></div>',
   }
 }
 function ButtonsFormatted() {
@@ -24,7 +24,7 @@ function ButtonsFormatted() {
 }
 
 storiesOf('Welcome', module)
-  .addDecorator(Reded)
+  .addDecorator(Green)
   .add('to Storybook',() => ({
     components: { Welcome },
     template: '<welcome :showApp="action" />',
@@ -79,7 +79,7 @@ storiesOf('Button/simple', module)
 
   })
   .add('All knobs', () => {
-    const name = text('Name', 'Jane');
+    const name = text('Name', 'Shahnaz');
     const stock = number('Stock', 20, {
       range: true,
       min: 0,
@@ -95,7 +95,7 @@ storiesOf('Button/simple', module)
     const price = number('Price', 2.25);
 
     const colour = color('Border', 'deeppink');
-    const today = date('Today', new Date('Jan 20 2017 GMT+0'));
+    const today = date('Today', new Date('Sep 4 2018 GMT+0'));
     const items = array('Items', ['Laptop', 'Book', 'Whiskey']);
     const nice = boolean('Nice', true);
 
