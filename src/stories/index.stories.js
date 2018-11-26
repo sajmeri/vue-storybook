@@ -8,8 +8,7 @@ import { withKnobs, text, number, boolean, array, select, color, date, button  }
 
 import MyButton from './MyButton.vue';
 import Welcome from './Welcome.vue';
-import Videos from './Videos.vue';
-import Videoslider from './VideosSlider.vue';
+
 
 //Decorator functions used with addDecorator
 function Green() {
@@ -122,17 +121,6 @@ storiesOf('Button/simple', module)
         `,
     };
   });
-
-  storiesOf('Videos', module)
-  .add('videos as list', () => ({
-     components: { Videos },
-     template: `<videos></videos>`
-   }))
-  .add('videoslider', () => ({
-      components: { Videoslider },
-      template: `<videoslider></videoslider>`
-    }));
-
 
 
 
